@@ -8,8 +8,8 @@ def get_config():
 
     # basic hyperparams to specify where to load/save data from/to
     config.add_argument("--log_dir", type=str, default="log")
-    config.add_argument("--dataset_name", type=str, default="blender")
-    config.add_argument("--scene", type=str, default="lego")
+    config.add_argument("--dataset_name", type=str, default="multicam")
+    config.add_argument("--scene", type=str, default="normalized")
     # model hyperparams
     config.add_argument("--use_viewdirs", action="store_false")
     config.add_argument("--randomized", action="store_false")
@@ -69,7 +69,7 @@ def get_config():
     if config.dataset_name == "blender":
         base_data_path = "data/nerf_synthetic/"
     elif config.dataset_name == "multicam":
-        base_data_path = "data/nerf_multiscale/"
+        base_data_path = "data/nerf_multiscale_my/"
     config.base_dir = path.join(base_data_path, config.scene)
 
     return config

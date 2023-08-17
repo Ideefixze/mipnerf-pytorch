@@ -19,6 +19,7 @@ flags.DEFINE_integer('n_down', 4,
 
 def load_renderings(data_dir, split):
   """Load images and metadata from disk."""
+  print(data_dir)
   f = 'transforms_{}.json'.format(split)
   with open(path.join(data_dir, f), 'r') as fp:
     meta = json.load(fp)

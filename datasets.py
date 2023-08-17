@@ -212,6 +212,8 @@ class Multicam(NeRFDataset):
 
             xy = [res2grid(w, h) for w, h in zip(self.w, self.h)]
             pixel_directions = [np.stack([x, y, np.ones_like(x)], axis=-1) for x, y in xy]
+            self.pix2cam = np.array(self.pix2cam)
+            self.cam_to_world = np.array(self.cam_to_world)
             camera_directions = [v @ p2c[:3, :3].T for v, p2c in zip(pixel_directions, self.pix2cam)]
             directions = [v @ c2w[:3, :3].T for v, c2w in zip(camera_directions, self.cam_to_world)]
             origins = [
